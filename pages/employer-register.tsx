@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 const theme = createTheme();
 
 export default function SignUp() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,6 +23,7 @@ export default function SignUp() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+      company: data.get('company-name')
     });
   };
 
@@ -89,6 +90,30 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="company-name"
+                  label="Company Name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="location"
+                  label="Headquarters Location"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="employees"
+                  label="Employees Number"
+                />
+              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -104,9 +129,9 @@ export default function SignUp() {
                   Already have an account? Sign in
                 </Link>
               </Grid>
-              <Grid item>
-                <Link onClick={() => { router.push('/employer-register') }} variant="body2">
-                  Do not have an employer account? Sign up
+              <Grid>
+                <Link onClick={() => { router.push('/register') }} variant="body2">
+                  Sign up as normal user
                 </Link>
               </Grid>
             </Grid>

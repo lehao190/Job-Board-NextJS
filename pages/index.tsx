@@ -13,8 +13,28 @@ import React, { useState } from 'react'
 import FormControl from '@mui/material/FormControl'
 import { SelectChangeEvent } from '@mui/material/Select'
 import Job from '@/components/Jobs/Job'
+import axios from 'axios'
+import { IJob } from '@/interfaces/job.interface'
+import { GetStaticProps } from 'next';
 
-export default function Home() {
+
+type Props = {
+  jobs: IJob[]
+}
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const { data: jobs } = await axios.get(process.env.NEXT_PUBLIC_API_URL + '/api/jobs')
+
+//   console.log('jobs: ', jobs)
+
+//   return {
+//     props: {
+//       jobs,
+//     }
+//   }
+// }
+
+export default function Home({ jobs }: Props) {
   const [searchingTerm, setSearchingTerm] = useState<string>('')
   const [level, setLevel] = useState<string>('')
   const [employmentType, setEmploymentType] = useState<string>('')
@@ -112,9 +132,11 @@ export default function Home() {
       </Box>
 
       {/* Job List */}
-      <Job />
-      <Job />
-      <Job />
+      {
+        // jobs.map((job) => {
+        //   return <Job job={job} key={job.id} />
+        // })
+      }
     </Container>
   )
 }

@@ -4,10 +4,13 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 import { useRouter } from 'next/navigation';
+import { IJob } from '@/interfaces/job.interface'
 
-type Props = {}
+type JobProps = {
+  job: IJob
+}
 
-export default function Job({}: Props) {
+export default function Job({ job }: JobProps) {
   const router = useRouter();
 
   return (

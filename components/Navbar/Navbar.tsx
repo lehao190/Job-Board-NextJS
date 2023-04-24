@@ -8,8 +8,7 @@ import Button from '@mui/material/Button'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { red } from '@mui/material/colors'
 import UserMenu from './UserMenu'
-import { Grid } from '@mui/material'
-import { Box } from '@mui/system'
+import { useRouter } from 'next/navigation'
 
 const darkTheme = createTheme({
   palette: {
@@ -21,6 +20,8 @@ const darkTheme = createTheme({
 })
 
 export default function Navbar() {
+  const router = useRouter();
+
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar
@@ -31,7 +32,7 @@ export default function Navbar() {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <WorkIcon fontSize='medium' color='primary' />
-          <Typography variant='h6' color='primary' sx={{ flexGrow: 1, ml: 1 }}>
+          <Typography onClick={() => router.push('/')} variant='h6' color='primary' sx={{ flexGrow: 1, ml: 1 }}>
             Jubby
           </Typography>
 
@@ -66,7 +67,7 @@ export default function Navbar() {
           </nav>
 
           <Button
-            href='#'
+            href='login'
             variant='outlined'
             sx={{
               my: 1,
